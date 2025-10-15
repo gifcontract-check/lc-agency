@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useUser } from '@/firebase';
 import { getAuth, signOut } from "firebase/auth";
 import Link from 'next/link';
-import { Menu, X } from "lucide-react";
+import { Menu, X, Rocket } from "lucide-react";
 import {
   Sheet,
   SheetContent,

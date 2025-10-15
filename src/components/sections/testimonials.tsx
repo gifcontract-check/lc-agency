@@ -100,8 +100,10 @@ const Testimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
+          <div className="flex justify-center gap-4 mt-8">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
         </Carousel>
       </div>
     </section>

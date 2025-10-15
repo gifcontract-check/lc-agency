@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
-            Votre Vision, Notre Code : Le Succès en Ligne.
+            Créons ensemble votre <span className="bg-gradient-to-r from-accent to-primary/80 text-transparent bg-clip-text">présence en ligne</span>
           </h1>
           <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto">
             Nous créons des expériences web sur-mesure qui captivent vos clients et propulsent votre croissance.

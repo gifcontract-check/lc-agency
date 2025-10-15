@@ -114,10 +114,10 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <>
-              <Link href="/login">
+              <Link href="/auth">
                 <Button variant="ghost">Se connecter</Button>
               </Link>
-              <Link href="/signup">
+              <Link href="/auth">
                 <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">S'inscrire</Button>
               </Link>
             </>
@@ -159,10 +159,10 @@ const Header = () => {
                     <Button variant="outline" onClick={() => { handleLogout(); setIsMenuOpen(false); }} className="w-full">Déconnexion</Button>
                   ) : (
                     <div className="flex flex-col gap-4">
-                       <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                       <Link href="/auth" onClick={() => setIsMenuOpen(false)}>
                         <Button variant="ghost" className="w-full">Se connecter</Button>
                       </Link>
-                      <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
+                      <Link href="/auth" onClick={() => setIsMenuOpen(false)}>
                         <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">S'inscrire</Button>
                       </Link>
                     </div>

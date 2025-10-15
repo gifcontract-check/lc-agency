@@ -102,10 +102,11 @@ const Header = () => {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/account">Profil</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
+                {user && user.email === 'louloucvrr@gmail.com' && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin">Pannel admin</Link>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem onClick={handleLogout}>
                   Déconnexion
                 </DropdownMenuItem>

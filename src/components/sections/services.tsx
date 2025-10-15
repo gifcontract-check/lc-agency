@@ -29,7 +29,7 @@ const Services = () => {
     <section id="services" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-headline text-primary">Nos Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary">Nos Services</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Des solutions web complètes pour transformer votre présence en ligne.
           </p>
@@ -41,7 +41,7 @@ const Services = () => {
                 <div className="p-4 bg-accent/10 rounded-full">
                   {service.icon}
                 </div>
-                <CardTitle className="pt-4 font-headline text-2xl">{service.title}</CardTitle>
+                <CardTitle className="pt-4 font-bold text-2xl">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{service.description}</p>

@@ -41,7 +41,7 @@ const WhyUs = () => {
             )}
           </div>
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-headline text-primary">Pourquoi nous choisir ?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary">Pourquoi nous choisir ?</h2>
             <p className="text-lg text-muted-foreground">
               Nous allons au-delà de la simple création de sites web. Nous construisons des partenariats pour assurer votre succès en ligne.
             </p>

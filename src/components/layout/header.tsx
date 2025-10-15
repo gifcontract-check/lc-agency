@@ -23,7 +23,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Logo />
-          <span className="text-xl font-headline font-bold text-primary">LC Agency</span>
+          <span className="text-xl font-bold text-primary">LC Agency</span>
         </div>
         <a href="#contact">
           <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">

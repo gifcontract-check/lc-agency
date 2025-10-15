@@ -28,7 +28,7 @@ const Testimonials = () => {
     <section id="testimonials" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-headline text-primary">Ce que disent nos clients</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary">Ce que disent nos clients</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             La satisfaction de nos clients est notre plus grande réussite.
           </p>

@@ -1,6 +1,7 @@
 import Contact from '@/components/sections/contact';
 import Faq from '@/components/sections/faq';
 import Hero from '@/components/sections/hero';
+import Process from '@/components/sections/process';
 import Services from '@/components/sections/services';
 import Testimonials from '@/components/sections/testimonials';
 import WhyUs from '@/components/sections/why-us';
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Services />
       <WhyUs />
+      <Process />
       <Testimonials />
       <Faq />
       <Contact />

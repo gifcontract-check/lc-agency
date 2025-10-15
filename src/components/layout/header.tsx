@@ -11,10 +11,12 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import Logo from "../icons/logo";
 
 const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#why-us", label: "Pourquoi nous" },
+  { href: "/#process", label: "Processus" },
   { href: "/#testimonials", label: "Avis" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
@@ -49,8 +51,9 @@ const Header = () => {
     )}>
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link href="/" className="text-xl font-bold text-primary">
-            LC Agency
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary">
+            <Logo />
+            <span>LC Agency</span>
           </Link>
         </div>
 

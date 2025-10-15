@@ -1,5 +1,5 @@
-import About from '@/components/sections/about';
 import Contact from '@/components/sections/contact';
+import Faq from '@/components/sections/faq';
 import Hero from '@/components/sections/hero';
 import Services from '@/components/sections/services';
 import Testimonials from '@/components/sections/testimonials';
@@ -12,7 +12,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <Testimonials />
-      <About />
+      <Faq />
       <Contact />
     </div>
   );

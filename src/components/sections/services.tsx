@@ -36,7 +36,7 @@ const Services = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="text-center shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+            <Card key={index} className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <CardHeader className="items-center">
                 <div className="p-4 bg-accent/10 rounded-full">
                   {service.icon}

@@ -1,6 +1,5 @@
 'use client';
 import { Button } from "@/components/ui/button";
-import Logo from "@/components/icons/logo";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -22,7 +21,6 @@ const Header = () => {
     )}>
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Logo />
           <span className="text-xl font-bold text-primary">LC Agency</span>
         </div>
         <a href="#contact">

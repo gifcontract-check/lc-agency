@@ -12,6 +12,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Logo from "../icons/logo";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navLinks = [
   { href: "/#services", label: "Services" },
@@ -44,6 +53,11 @@ const Header = () => {
     }
   };
 
+  const getInitials = (email: string | null | undefined) => {
+    if (!email) return '..';
+    return email.substring(0, 2).toUpperCase();
+  };
+
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
@@ -52,7 +66,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary">
-            <Logo />
+            <Rocket className="h-6 w-6" />
             <span>LC Agency</span>
           </Link>
         </div>
@@ -69,7 +83,34 @@ const Header = () => {
           {isUserLoading ? (
             <div className="w-24 h-10 bg-muted rounded-md animate-pulse" />
           ) : user ? (
-            <Button variant="outline" onClick={handleLogout}>Déconnexion</Button>
+             <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="secondary" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                     <AvatarImage src={user.photoURL || ''} alt="Avatar" />
+                    <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">Mon Compte</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email}
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/account">Profil</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  Déconnexion
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <>
               <Link href="/login">

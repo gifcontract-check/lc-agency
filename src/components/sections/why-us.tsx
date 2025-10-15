@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CheckCircle2 } from 'lucide-react';
 
 const features = [
@@ -22,30 +20,16 @@ const features = [
 ];
 
 const WhyUs = () => {
-  const whyUsImage = PlaceHolderImages.find(img => img.id === 'why-us-collaboration');
-
   return (
     <section id="why-us" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            {whyUsImage && (
-              <Image
-                src={whyUsImage.imageUrl}
-                alt={whyUsImage.description}
-                width={600}
-                height={600}
-                className="rounded-lg shadow-xl object-cover aspect-square"
-                data-ai-hint={whyUsImage.imageHint}
-              />
-            )}
-          </div>
-          <div className="space-y-8">
+        <div className="grid md:grid-cols-1 gap-12 items-center">
+          <div className="space-y-8 max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-primary">Pourquoi nous choisir ?</h2>
             <p className="text-lg text-muted-foreground">
               Nous allons au-delà de la simple création de sites web. Nous construisons des partenariats pour assurer votre succès en ligne.
             </p>
-            <ul className="space-y-6">
+            <ul className="space-y-6 text-left">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-start gap-4">
                   <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />

@@ -5,21 +5,21 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 const testimonials = [
   {
     id: "testimonial-1",
-    name: "Juliette Dubois",
+    name: "J.D.",
     role: "Fondatrice de 'Mon Atelier'",
-    quote: "LC Agency a transformé notre présence en ligne. Le site est magnifique et nos ventes ont décollé. Un service exceptionnel !"
+    quote: "Le site est magnifique et nos ventes ont décollé."
   },
   {
     id: "testimonial-2",
-    name: "Marc Petit",
+    name: "M.P.",
     role: "Gérant de 'Bistro Le Gout'",
-    quote: "Une équipe à l'écoute et très professionnelle. La refonte de notre site a attiré une nouvelle clientèle. Je recommande vivement."
+    quote: "Une équipe à l'écoute et très professionnelle."
   },
   {
     id: "testimonial-3",
-    name: "Chloé Martin",
+    name: "C.M.",
     role: "Artisane",
-    quote: "Le processus a été simple et transparent. Mon site vitrine est exactement comme je l'imaginais. Merci à toute l'équipe !"
+    quote: "Le processus a été simple et transparent. Parfait !"
   }
 ];
 
@@ -47,7 +47,7 @@ const Testimonials = () => {
                   {image && (
                     <Avatar>
                       <AvatarImage src={image.imageUrl} alt={testimonial.name} data-ai-hint={image.imageHint} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      <AvatarFallback>{testimonial.name}</AvatarFallback>
                     </Avatar>
                   )}
                   <div>

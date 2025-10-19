@@ -1,6 +1,7 @@
 import Contact from '@/components/sections/contact';
 import Faq from '@/components/sections/faq';
 import Hero from '@/components/sections/hero';
+import Pricing from '@/components/sections/pricing';
 import Process from '@/components/sections/process';
 import Services from '@/components/sections/services';
 import Testimonials from '@/components/sections/testimonials';
@@ -11,6 +12,7 @@ export default function Home() {
     <div className="flex flex-col">
       <Hero />
       <Services />
+      <Pricing />
       <WhyUs />
       <Process />
       <Testimonials />

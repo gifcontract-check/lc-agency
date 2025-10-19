@@ -46,13 +46,13 @@ const pricingTiers = [
     isFeatured: false,
   },
   {
-    name: "Sur Mesure",
+    name: "Sur-mesure",
     price: "Devis",
-    description: "Un projet complexe ? Nous créons la solution unique qu'il vous faut.",
+    description: "Idéale pour : projets SaaS, plateformes personnalisées ou refontes totales.",
     features: [
       "Fonctionnalités avancées",
-      "Intégrations API tierces",
-      "Espace membre complexe",
+      "Intégrations API",
+      "Intégration d'IA",
       "Accompagnement dédié",
     ],
     isFeatured: false,
@@ -92,7 +92,7 @@ const Pricing = () => {
               </CardContent>
               <CardFooter>
                 <Button className={`w-full ${tier.isFeatured ? 'bg-accent hover:bg-accent/90 text-accent-foreground' : 'bg-primary'}`}>
-                  {tier.name === 'Sur Mesure' ? 'Nous contacter' : 'Choisir cette formule'}
+                  {tier.name === 'Sur-mesure' ? 'Nous contacter' : 'Choisir cette formule'}
                 </Button>
               </CardFooter>
             </Card>

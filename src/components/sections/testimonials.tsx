@@ -7,11 +7,13 @@ import { useFirestore } from "@/firebase";
 import { collection } from "firebase/firestore";
 import { Skeleton } from "../ui/skeleton";
 import { useMemoFirebase } from "@/firebase/provider";
+import { Star } from "lucide-react";
 
 interface Testimonial {
   id: string;
   name: string;
   quote: string;
+  stars: number;
 }
 
 const Testimonials = () => {
@@ -58,6 +60,11 @@ const Testimonials = () => {
                   <div className="p-1 h-full">
                     <Card className="flex flex-col justify-between shadow-lg h-full">
                       <CardContent className="pt-6 flex-grow">
+                        <div className="flex mb-2">
+                           {Array.from({ length: 5 }).map((_, i) => (
+                            <Star key={i} className={`h-5 w-5 ${i < testimonial.stars ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+                          ))}
+                        </div>
                         <blockquote className="text-lg text-foreground italic border-l-4 border-accent pl-4">
                           "{testimonial.quote}"
                         </blockquote>

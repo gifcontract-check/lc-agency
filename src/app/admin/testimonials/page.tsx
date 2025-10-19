@@ -39,7 +39,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { PlusCircle, Edit, Trash2 } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, Star } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -52,10 +52,13 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useMemoFirebase } from '@/firebase/provider';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 
 const testimonialSchema = z.object({
   name: z.string().min(1, { message: 'Le nom est requis.' }),
   quote: z.string().min(10, { message: 'Le témoignage doit contenir au moins 10 caractères.' }),
+  stars: z.number().min(1, "La note est requise.").max(5),
 });
 
 type TestimonialFormValues = z.infer<typeof testimonialSchema>;
@@ -64,6 +67,7 @@ interface Testimonial {
   id: string;
   name: string;
   quote: string;
+  stars: number;
 }
 
 export default function TestimonialsAdminPage() {
@@ -83,6 +87,7 @@ export default function TestimonialsAdminPage() {
     defaultValues: {
       name: '',
       quote: '',
+      stars: 5,
     },
   });
 
@@ -97,11 +102,13 @@ export default function TestimonialsAdminPage() {
       form.reset({
         name: editingTestimonial.name,
         quote: editingTestimonial.quote,
+        stars: editingTestimonial.stars,
       });
     } else {
       form.reset({
         name: '',
         quote: '',
+        stars: 5,
       });
     }
   }, [editingTestimonial, form]);
@@ -220,6 +227,34 @@ export default function TestimonialsAdminPage() {
                     </FormItem>
                   )}
                 />
+                 <FormField
+                  control={form.control}
+                  name="stars"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Note</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={(value) => field.onChange(Number(value))}
+                          defaultValue={String(field.value)}
+                          className="flex space-x-2"
+                        >
+                          {[1, 2, 3, 4, 5].map((value) => (
+                             <FormItem key={value} className="flex items-center space-x-1 space-y-0">
+                               <FormControl>
+                                  <RadioGroupItem value={String(value)} id={`stars-${value}`} />
+                               </FormControl>
+                                <Label htmlFor={`stars-${value}`} className="cursor-pointer">
+                                  <Star className={`h-5 w-5 ${value <= (form.watch('stars') || 0) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+                                </Label>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button type="button" variant="secondary">Annuler</Button>
@@ -244,6 +279,7 @@ export default function TestimonialsAdminPage() {
                 <TableRow>
                   <TableHead className="w-[150px]">Nom</TableHead>
                   <TableHead>Témoignage</TableHead>
+                  <TableHead className="w-[100px]">Note</TableHead>
                   <TableHead className="text-right w-[120px]">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -252,6 +288,13 @@ export default function TestimonialsAdminPage() {
                   <TableRow key={testimonial.id}>
                     <TableCell className="font-medium">{testimonial.name}</TableCell>
                     <TableCell>{testimonial.quote}</TableCell>
+                     <TableCell>
+                      <div className="flex items-center">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className={`h-5 w-5 ${i < testimonial.stars ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+                        ))}
+                      </div>
+                    </TableCell>
                     <TableCell className="text-right">
                       <Button variant="ghost" size="icon" onClick={() => handleEdit(testimonial)}>
                         <Edit className="h-4 w-4" />
@@ -279,7 +322,7 @@ export default function TestimonialsAdminPage() {
                   </TableRow>
                 )) : (
                   <TableRow>
-                    <TableCell colSpan={3} className="text-center">Aucun témoignage trouvé.</TableCell>
+                    <TableCell colSpan={4} className="text-center">Aucun témoignage trouvé.</TableCell>
                   </TableRow>
                 )}
               </TableBody>

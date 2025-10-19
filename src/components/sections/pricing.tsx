@@ -71,13 +71,13 @@ const Pricing = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pricingTiers.map((tier) => (
-            <Card key={tier.name} className={`flex flex-col relative overflow-hidden ${tier.isFeatured ? 'border-accent shadow-accent/20 shadow-lg' : ''}`}>
-              {tier.isFeatured && (
-                <Badge className="absolute top-0 right-0 -mr-1 mt-6 -rotate-45 bg-accent text-accent-foreground py-1 px-8">
-                  <Star className="w-4 h-4 mr-2" /> Le plus choisi
-                </Badge>
-              )}
-              <CardHeader className="text-center">
+            <Card key={tier.name} className={`flex flex-col ${tier.isFeatured ? 'border-accent shadow-accent/20 shadow-lg' : ''}`}>
+              <CardHeader className="text-center items-center">
+                {tier.isFeatured && (
+                  <Badge variant="outline" className="mb-4 border-accent text-accent">
+                    <Star className="w-4 h-4 mr-2" /> Le plus choisi
+                  </Badge>
+                )}
                 <CardTitle className="text-2xl font-bold">{tier.name}</CardTitle>
                 <CardDescription>{tier.description}</CardDescription>
               </CardHeader>

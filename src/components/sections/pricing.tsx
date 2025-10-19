@@ -4,14 +4,17 @@ import { Check } from "lucide-react";
 
 const pricingTiers = [
   {
-    name: "Essentiel",
-    price: "499€",
-    description: "Idéal pour commencer et marquer votre présence en ligne.",
+    name: "Starter",
+    price: "180€",
+    description: "Idéale pour : artisans, indépendants, CV en ligne, restaurant, coiffeur, auto-entrepreneur…",
     features: [
-      "Site vitrine one-page",
-      "Design personnalisé",
-      "Formulaire de contact",
-      "Mise en ligne",
+      "1 page d’accueil + 3 pages (ex : services, contact, à propos)",
+      "Design responsive et moderne",
+      "Formulaire de contact fonctionnel",
+      "Hébergement et base de données via Firebase",
+      "Nom de domaine offert la 1ère année",
+      "Panneau admin simple (ex : modifier le texte, photos, etc.)",
+      "Option : +30€/page supplémentaire",
     ],
     isFeatured: false,
   },
@@ -73,7 +76,7 @@ const Pricing = () => {
               <CardContent className="flex-grow">
                 <div className="text-center mb-6">
                   <span className="text-4xl font-bold">{tier.price}</span>
-                  {tier.name !== 'Sur Mesure' && <span className="text-muted-foreground"> / une fois</span>}
+                  {tier.name !== 'Sur Mesure' && tier.price !== 'Devis' && <span className="text-muted-foreground"> / une fois</span>}
                 </div>
                 <ul className="space-y-3">
                   {tier.features.map((feature, index) => (

@@ -17,14 +17,17 @@ const pricingTiers = [
     isFeatured: false,
   },
   {
-    name: "Professionnel",
-    price: "999€",
-    description: "La solution complète pour les entreprises qui veulent grandir.",
+    name: "Pro",
+    price: "399€",
+    description: "Idéale pour : PME, restaurants, agences, garages, boutiques locales…",
     features: [
-      "Site multi-pages (5 pages)",
-      "Intégration de contenu",
+      "Site complet (5 à 8 pages)",
+      "Design personnalisé selon charte graphique",
       "Optimisation SEO de base",
-      "Blog",
+      "Panneau admin (modification de contenu, photos, avis, FAQ…)",
+      "Connexion Firestore (auth, base de données, stockage images)",
+      "Intégration Google Maps, réseaux sociaux, etc.",
+      "Sécurité HTTPS incluse"
     ],
     isFeatured: true,
   },

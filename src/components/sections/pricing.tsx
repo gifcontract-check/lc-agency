@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 const pricingTiers = [
   {
     name: "Starter",
-    price: "180€",
+    price: "179€",
     description: "Idéale pour : artisans, indépendants, CV en ligne, restaurant, coiffeur, auto-entrepreneur…",
     features: [
       "1 page d’accueil + 3 pages (ex : services, contact, à propos)",

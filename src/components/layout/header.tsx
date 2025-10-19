@@ -26,7 +26,6 @@ const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#why-us", label: "Pourquoi nous" },
   { href: "/#process", label: "Processus" },
-  { href: "/#formules", label: "Formules" },
   { href: "/#testimonials", label: "Avis" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },

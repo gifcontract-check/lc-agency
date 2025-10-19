@@ -8,6 +8,7 @@ const pricingTiers = [
     name: "Starter",
     price: "179€",
     description: "Idéale pour : artisans, indépendants, CV en ligne, restaurant, coiffeur, auto-entrepreneur…",
+    downPayment: "0% d'acompte",
     features: [
       "1 page d’accueil + 3 pages (ex : services, contact, à propos)",
       "Design responsive et moderne",
@@ -21,6 +22,7 @@ const pricingTiers = [
     name: "Pro",
     price: "399€",
     description: "Idéale pour : PME, restaurants, agences, garages, boutiques locales…",
+    downPayment: "10% d'acompte",
     features: [
       "Site complet (5 à 8 pages)",
       "Design personnalisé selon charte graphique",
@@ -36,6 +38,7 @@ const pricingTiers = [
     name: "E-commerce",
     price: "699€",
     description: "Idéale pour : boutiques, créateurs, dropshippers, marques…",
+    downPayment: "15% d'acompte",
     features: [
         "Tout de la formule “Pro”",
         "Catalogue produits",
@@ -50,6 +53,7 @@ const pricingTiers = [
     name: "Sur-mesure",
     price: "Devis",
     description: "Idéale pour : projets SaaS, plateformes personnalisées ou refontes totales.",
+    downPayment: "25% d'acompte",
     features: [
       "Fonctionnalités avancées",
       "Intégrations API",
@@ -87,6 +91,7 @@ const Pricing = () => {
                 <div className="text-center mb-6">
                   <span className="text-4xl font-bold">{tier.price}</span>
                   {tier.name !== 'Sur Mesure' && tier.price !== 'Devis' && <span className="text-muted-foreground"> / une fois</span>}
+                   <p className="text-sm text-muted-foreground mt-1">{tier.downPayment}</p>
                 </div>
                 <ul className="space-y-3">
                   {tier.features.map((feature, index) => (

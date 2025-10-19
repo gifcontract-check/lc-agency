@@ -45,40 +45,6 @@
         "quote",
         "stars"
       ]
-    },
-    "Product": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Product",
-      "type": "object",
-      "description": "Represents a service package or formula offered.",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the product/formula."
-        },
-        "description": {
-          "type": "string",
-          "description": "A detailed description of the product."
-        },
-        "price": {
-          "type": "number",
-          "description": "The base price of the product."
-        },
-        "forWhom": {
-          "type": "string",
-          "description": "The target audience for this product (e.g., 'Pour les indépendants')."
-        },
-        "options": {
-          "type": "string",
-          "description": "Additional options or features, possibly with extra costs."
-        }
-      },
-      "required": [
-        "name",
-        "description",
-        "price",
-        "forWhom"
-      ]
     }
   },
   "auth": {
@@ -88,7 +54,7 @@
     ]
   },
   "firestore": {
-    "rules": "rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n    match /testimonials/{testimonialId} {\n      allow read, list: if true;\n      allow write: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n    match /products/{productId} {\n      allow read, list: if true;\n      allow write: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n  }\n}\n",
+    "rules": "rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n    match /testimonials/{testimonialId} {\n      allow read: if true;\n      allow list: if true;\n      allow write: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n  }\n}\n",
     "structure": [
       {
         "path": "/users/{userId}",
@@ -118,22 +84,6 @@
             {
               "name": "testimonialId",
               "description": "The unique identifier of the testimonial."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/products/{productId}",
-        "definition": {
-          "entityName": "Product",
-          "schema": {
-            "$ref": "#/backend/entities/Product"
-          },
-          "description": "Stores service packages (formules). Publicly readable, but only writable by admin.",
-          "params": [
-            {
-              "name": "productId",
-              "description": "The unique identifier of the product."
             }
           ]
         }

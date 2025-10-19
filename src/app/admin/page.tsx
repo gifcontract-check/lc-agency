@@ -34,9 +34,6 @@ export default function AdminPage() {
           <Link href="/admin/testimonials">
             <Button variant="outline" className="w-full justify-start">Gérer les témoignages</Button>
           </Link>
-          <Link href="/admin/products">
-            <Button variant="outline" className="w-full justify-start">Gérer les formules</Button>
-          </Link>
         </div>
     </div>
   );

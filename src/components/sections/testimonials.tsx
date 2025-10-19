@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useCollection } from "@/firebase/firestore/use-collection";
@@ -20,6 +21,14 @@ const Testimonials = () => {
   const firestore = useFirestore();
   const testimonialsCollection = useMemoFirebase(() => firestore ? collection(firestore, 'testimonials') : null, [firestore]);
   const { data: testimonials, isLoading } = useCollection<Testimonial>(testimonialsCollection);
+
+  const averageRating = useMemo(() => {
+    if (!testimonials || testimonials.length === 0) {
+      return 0;
+    }
+    const totalStars = testimonials.reduce((acc, t) => acc + t.stars, 0);
+    return totalStars / testimonials.length;
+  }, [testimonials]);
 
   return (
     <section id="testimonials" className="py-20 md:py-32 bg-background">
@@ -87,6 +96,26 @@ const Testimonials = () => {
             <CarouselNext />
           </div>
         </Carousel>
+
+        {!isLoading && testimonials && testimonials.length > 0 && (
+          <div className="flex flex-col items-center mt-12">
+            <p className="text-lg font-medium text-primary mb-2">
+              Note moyenne : {averageRating.toFixed(1)} / 5
+            </p>
+            <div className="flex items-center">
+              {Array.from({ length: 5 }).map((_, i) => {
+                const roundedAverage = Math.round(averageRating * 2) / 2;
+                let starClass = "text-gray-300";
+                if (i < Math.floor(roundedAverage)) {
+                  starClass = "text-yellow-400 fill-yellow-400";
+                } else if (i < roundedAverage) {
+                  starClass = "text-yellow-400"; // Half-star logic could be more complex with custom icons
+                }
+                return <Star key={i} className={`h-7 w-7 ${starClass}`} />;
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

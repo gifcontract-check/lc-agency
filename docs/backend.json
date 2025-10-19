@@ -45,6 +45,48 @@
         "quote",
         "stars"
       ]
+    },
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Represents a service package or formula offered by the agency.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the product/formula."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of what the product includes."
+        },
+        "price": {
+          "type": "number",
+          "description": "The price of the product."
+        },
+        "forWhom": {
+          "type": "string",
+          "description": "The target audience for this product (e.g., 'Artisans', 'PME')."
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of features or included options."
+        },
+        "extra": {
+           "type": "string",
+           "description": "Information about extra options, like price per additional page."
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "price",
+        "forWhom",
+        "options"
+      ]
     }
   },
   "auth": {
@@ -54,7 +96,7 @@
     ]
   },
   "firestore": {
-    "rules": "rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n    match /testimonials/{testimonialId} {\n      allow read: if true;\n      allow create, update, delete: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n  }\n}\n",
+    "rules": "rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n    match /testimonials/{testimonialId} {\n      allow read: if true;\n      allow create, update, delete: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n    match /products/{productId} {\n      allow read: if true;\n      allow create, update, delete: if request.auth != null && request.auth.token.email == 'louloucvrr@gmail.com';\n    }\n  }\n}\n",
     "structure": [
       {
         "path": "/users/{userId}",
@@ -87,8 +129,23 @@
             }
           ]
         }
+      },
+      {
+        "path": "/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Stores the different service formulas offered. Publicly readable, but only writable by admin.",
+          "params": [
+            {
+              "name": "productId",
+              "description": "The unique identifier of the product."
+            }
+          ]
+        }
       }
-    ],
-    "reasoning": "Given the application's simple data model (only users) and lack of collaborative features, a straightforward path-based ownership structure is sufficient. The `/users/{userId}` collection will store user profiles.  No denormalization is needed, as the application focuses primarily on presentation and contact initiation, with minimal data management. This structure ensures authorization independence and supports the necessary query capabilities (QAPs) for user retrieval and management, if those become relevant later."
+    ]
   }
 }

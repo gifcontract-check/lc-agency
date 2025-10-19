@@ -10,9 +10,7 @@ const pricingTiers = [
     features: [
       "1 page d’accueil + 3 pages (ex : services, contact, à propos)",
       "Design responsive et moderne",
-      "Formulaire de contact fonctionnel",
       "Hébergement et base de données via Firebase",
-      "Nom de domaine offert la 1ère année",
       "Panneau admin simple (ex : modifier le texte, photos, etc.)",
       "Option : +30€/page supplémentaire",
     ],

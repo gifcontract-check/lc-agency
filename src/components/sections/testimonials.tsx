@@ -5,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useCollection } from "@/firebase/firestore/use-collection";
 import { useFirestore } from "@/firebase";
 import { collection } from "firebase/firestore";
-import { useMemo } from "react";
 import { Skeleton } from "../ui/skeleton";
 import { useMemoFirebase } from "@/firebase/provider";
 
@@ -17,7 +16,7 @@ interface Testimonial {
 
 const Testimonials = () => {
   const firestore = useFirestore();
-  const testimonialsCollection = useMemoFirebase(() => collection(firestore, 'testimonials'), [firestore]);
+  const testimonialsCollection = useMemoFirebase(() => firestore ? collection(firestore, 'testimonials') : null, [firestore]);
   const { data: testimonials, isLoading } = useCollection<Testimonial>(testimonialsCollection);
 
   return (

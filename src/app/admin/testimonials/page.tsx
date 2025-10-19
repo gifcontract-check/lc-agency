@@ -72,7 +72,7 @@ export default function TestimonialsAdminPage() {
   const firestore = useFirestore();
   const { toast } = useToast();
   
-  const testimonialsCollectionRef = useMemoFirebase(() => collection(firestore, 'testimonials'), [firestore]);
+  const testimonialsCollectionRef = useMemoFirebase(() => firestore ? collection(firestore, 'testimonials') : null, [firestore]);
   const { data: testimonials, isLoading } = useCollection<Testimonial>(testimonialsCollectionRef);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -119,6 +119,7 @@ export default function TestimonialsAdminPage() {
   };
   
   const handleDelete = async (id: string) => {
+    if (!firestore) return;
     try {
       await deleteDoc(doc(firestore, 'testimonials', id));
       toast({
@@ -136,6 +137,7 @@ export default function TestimonialsAdminPage() {
   };
 
   const onSubmit = async (values: TestimonialFormValues) => {
+    if (!firestore) return;
     try {
       if (editingTestimonial) {
         // Update existing testimonial
